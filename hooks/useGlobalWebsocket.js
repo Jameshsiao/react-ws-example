@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import useWebSocket from 'react-use-websocket'
 import { orderBy, throttle } from 'lodash'
 
@@ -8,6 +8,8 @@ const useGlobalWebsocket = () => {
   const [trades, setTrades] = useState([])
   const [ticker, setTicker] = useState()
   const _trades = useRef([])
+  const throttledTrades = useCallback(throttle(trades => setTrades(trades), 100))
+  const throttledTicker = useCallback(throttle(ticker => setTicker(ticker), 200))
   const {
     sendMessage,
     sendJsonMessage,
@@ -24,11 +26,11 @@ const useGlobalWebsocket = () => {
         } else if (lastJsonMessage.type === 'unsubscribed') {
           _trades.current = []
         }
-        throttle(() => setTrades(_trades.current), 200)()
+        throttledTrades(_trades.current)
         break
       case 'ticker':
         if (lastJsonMessage.type === 'update') {
-          throttle(() => setTicker(lastJsonMessage.data))()
+          throttledTicker(lastJsonMessage.data)
         }
         break
       default:
