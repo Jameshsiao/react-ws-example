@@ -1,0 +1,24 @@
+.column {
+  padding: 16px;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.tradeItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.tradeItemColumn {
+  flex: 1;
+}
+
+.ask {
+  color: #FF3B69;
+}
+
+.bid {
+  color: #02C77A;
+}

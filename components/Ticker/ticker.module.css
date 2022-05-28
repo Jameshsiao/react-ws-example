@@ -1,0 +1,18 @@
+.column {
+  padding: 16px;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.item {
+  flex: 1;
+  padding: 4px 0;
+}
+
+.ask {
+  color: #FF3B69;
+}
+
+.bid {
+  color: #02C77A;
+}

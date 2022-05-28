@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 12px 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerItem {
+  margin: 0 4px;
+}
