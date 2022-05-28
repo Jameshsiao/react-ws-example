@@ -8,8 +8,6 @@ const useGlobalWebsocket = () => {
   const [trades, setTrades] = useState([])
   const [ticker, setTicker] = useState()
   const _trades = useRef([])
-  const throttledTrades = useCallback(throttle(trades => setTrades(trades), 100))
-  const throttledTicker = useCallback(throttle(ticker => setTicker(ticker), 200))
   const {
     sendMessage,
     sendJsonMessage,
@@ -17,6 +15,8 @@ const useGlobalWebsocket = () => {
     readyState,
     getWebSocket
   } = useWebSocket(FTX_WS_API, { share: true, retryOnError: true })
+  const throttledTrades = useCallback(throttle(trades => setTrades(trades), 100), [lastJsonMessage?.market])
+  const throttledTicker = useCallback(throttle(ticker => setTicker(ticker), 200), [lastJsonMessage?.market])
 
   useEffect(() => {
     switch (lastJsonMessage?.channel) {
