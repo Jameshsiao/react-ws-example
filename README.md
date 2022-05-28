@@ -1,9 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# react-ws-example
+The web application example build with [Next.js](https://nextjs.org/learn/foundations/about-nextjs?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website) and websocket ([react-use-websocket](https://github.com/robtaussig/react-use-websocket#readme)) to integrate with FTX websocket API
 
-## Getting Started
+## Get Started
+### Install dependencies
+```bash
+yarn
+```
 
-First, run the development server:
-
+### Run dev server
 ```bash
 npm run dev
 # or
